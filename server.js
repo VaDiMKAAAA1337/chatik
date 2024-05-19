@@ -48,7 +48,7 @@ function guarded(req, res) {
 }
 
 function getCredentionals(c = '') {
-  const cookies = cookie.parse();
+  const cookies = cookie.parse(c);
   const token = cookies?.token;
   if(!token || !validAuthTokens.includes(token)) return null;
   const [user_id, login] = token.split('.');
