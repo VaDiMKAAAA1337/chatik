@@ -47,8 +47,8 @@ function guarded(req, res) {
   return res.end('Error 404');
 }
 
-function getCredentionals(req) {
-  const cookies = cookie.parse(req.headers?.cookie || '');
+function getCredentionals(c = '') {
+  const cookies = cookie.parse();
   const token = cookies?.token;
   if(!token || !validAuthTokens.includes(token)) return null;
   const [user_id, login] = token.split('.');
